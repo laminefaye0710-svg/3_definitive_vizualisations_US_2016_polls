@@ -80,7 +80,11 @@ viz1 <- actuals |>
     lbl_hjust  = if_else(poll_avg > 4 | state == "Colorado", 1.1, -0.08)
   )
 
-axis_range <- c(-12, 10)
+# ggrepel keeps labels from overlapping points and each other
+if (!requireNamespace("ggrepel", quietly = TRUE)) install.packages("ggrepel")
+library(ggrepel)
+
+axis_range <- c(-14, 12)
 
 p1 <- ggplot(viz1, aes(x = actual, y = poll_avg)) +
   # Perfect-prediction diagonal
@@ -92,21 +96,28 @@ p1 <- ggplot(viz1, aes(x = actual, y = poll_avg)) +
   # Vertical error segment (poll avg → diagonal)
   geom_segment(
     aes(xend = actual, yend = actual, colour = flipped),
-    linewidth = 0.55, alpha = 0.55
+    linewidth = 0.6, alpha = 0.5
   ) +
-  # State points
-  geom_point(aes(colour = flipped, shape = flipped), size = 3.8, alpha = 0.9) +
-  # State labels
-  geom_text(
-    aes(label = state, hjust = lbl_hjust),
-    size = 2.75, family = "sans"
+  # State points — larger and more spread out
+  geom_point(aes(colour = flipped, shape = flipped), size = 5, alpha = 0.9) +
+  # Non-overlapping state labels
+  ggrepel::geom_text_repel(
+    aes(label = state, colour = flipped),
+    size          = 3.2,
+    fontface      = "plain",
+    box.padding   = 0.5,
+    point.padding = 0.4,
+    segment.size  = 0.3,
+    segment.alpha = 0.4,
+    max.overlaps  = Inf,
+    show.legend   = FALSE
   ) +
   # Annotation box for Rust Belt
   annotate("rect",
-           xmin = -1.5, xmax = 0.4, ymin = 3.6, ymax = 7.4,
+           xmin = -1.8, xmax = 0.6, ymin = 3.2, ymax = 7.8,
            fill = NA, colour = "#c0392b", linewidth = 0.55, linetype = "dotted") +
   annotate("text",
-           x = -0.55, y = 7.75, size = 2.7, colour = "#c0392b", hjust = 0.5,
+           x = -0.6, y = 8.2, size = 3.0, colour = "#c0392b", hjust = 0.5,
            label = "Rust Belt: polls said Clinton,\nvoters said Trump") +
   scale_colour_manual(
     values = c("TRUE" = "#c0392b", "FALSE" = "#1a6bbd"),
@@ -125,17 +136,16 @@ p1 <- ggplot(viz1, aes(x = actual, y = poll_avg)) +
     y       = "Poll average margin (Clinton − Trump, pp)",
     caption = "margin = rawpoll_clinton − rawpoll_trump  |  Actual results: dslabs::results_us_election_2016 (Ballotpedia)"
   ) +
-  theme_minimal(base_size = 11) +
+  theme_minimal(base_size = 12) +
   theme(
-    plot.title       = element_text(face = "bold", size = 12),
-    plot.subtitle    = element_text(size = 8.5, colour = "grey40", lineheight = 1.45),
-    plot.caption     = element_text(size = 7,   colour = "grey55", lineheight = 1.3),
+    plot.title       = element_text(face = "bold", size = 13),
+    plot.caption     = element_text(size = 7, colour = "grey55"),
     legend.position  = "top",
     panel.grid.minor = element_blank()
   )
 
 ggsave("output/figures/task3_viz1_predicted_vs_actual.png",
-       p1, width = 7.5, height = 7.5, dpi = 200)
+       p1, width = 9, height = 9, dpi = 200)
 message("Saved: task3_viz1_predicted_vs_actual.png")
 
 
