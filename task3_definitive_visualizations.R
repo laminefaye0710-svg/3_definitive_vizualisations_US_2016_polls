@@ -1,6 +1,5 @@
 # =============================================================================
-# Module 1 Project — Task 3: Definitive Visualizations
-# STA4320 / MAT5314X — Techniques of Data Analysis
+# Definitive Visualizations
 #
 # Builds directly on: github.com/nmaccabe/polling-bias-2016-us-election
 #
