@@ -46,18 +46,17 @@ Each battleground state is plotted as poll average (y) against certified electio
 ---
 
 ### VIZ 2 — LV Screen Inflated Clinton's Lead Among Quality Pollsters
-`output/figures/task3_viz2_lv_rv_quality_gap.png`
 
-**Addresses:** Nathan flagged LV screen quality as an unresolved limitation.
+<img width="2200" height="1200" alt="task3_viz2_lv_rv_quality_gap" src="https://github.com/user-attachments/assets/2e2416d4-5997-47ee-a5ca-4e86c681c0e3" />
+
 
 For each battleground state, shows the gap between the mean LV margin and the mean RV margin, faceted by pollster quality tier (B+ and above vs below B+). Among quality pollsters, the LV screen consistently gave Clinton a larger lead than the RV screen — the mechanism behind Nathan's finding that quality-weighted aggregates moved further toward Clinton.
 
 ---
 
 ### VIZ 3 — Late Polls Never Corrected Toward the True Result
-`output/figures/task3_viz3_late_poll_convergence.png`
 
-**Addresses:** Nathan flagged poll recency as an unresolved limitation.
+<img width="2000" height="2200" alt="task3_viz3_late_poll_convergence" src="https://github.com/user-attachments/assets/59041334-df10-4524-9798-0a34887e1540" />
 
 A 14-day rolling mean poll average for each state that flipped to Trump, plotted against the certified result. In Michigan, Wisconsin, Pennsylvania, and New Hampshire the rolling average never converged to the true result through election eve, ruling out a late-campaign correction as an explanation for the miss.
 
