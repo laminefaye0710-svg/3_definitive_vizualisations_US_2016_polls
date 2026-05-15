@@ -38,8 +38,7 @@ The actual election results are loaded directly from `dslabs::results_us_electio
 
 ### VIZ 1 — Polls vs Reality: 2016 Battleground Margins
 
-<img width="1500" height="1500" alt="task3_viz1_predicted_vs_actual" src="https://github.com/user-attachments/assets/068408ff-a629-4856-903f-23c62fef1524" />
-
+<img width="1800" height="1800" alt="task3_viz1_predicted_vs_actual" src="https://github.com/user-attachments/assets/691e5389-b7de-4614-8aaa-64a6031b88b1" />
 
 Each battleground state is plotted as poll average (y) against certified election result (x). Points above the y = x diagonal overestimated Clinton's lead. The Rust Belt states (MI, WI, PA) sit furthest above the line — the states that decided the Electoral College — while Florida and Nevada land close to it.
 
