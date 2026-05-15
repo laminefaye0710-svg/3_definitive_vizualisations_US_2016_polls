@@ -1,5 +1,4 @@
-# Task 3 — Definitive Visualizations
-### STA4320 / MAT5314X — Module 1 Project
+# Definitive Visualizations of the 2016 US polls
 
 ---
 
